@@ -16,17 +16,14 @@ public class ASIcamShooter extends AbstractShooter {
 
     public ASIcamShooter(){
         ASIUSBManager.initContext(App.getContext());
-        return;
     }
 
     @Override
     public boolean chkCamPresenceDefault () throws StrixException {
         Log.d(logTag, "chkCamPresenceDefault");
         try {
-            if (ZwoCamera.getNumOfConnectedCameras() > 0){
-                return true;
-            } else
-                return false;
+            return ZwoCamera.getNumOfConnectedCameras() > 0 ? true : false;
+
         } catch (Exception e) {
             throw new StrixException(e.getMessage());
         }
