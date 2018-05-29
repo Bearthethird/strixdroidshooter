@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">strixdroidshooter</string>
+    <string name="forms.maim.shootbutton">Shoot</string>
+    <string name="forms.main.statustext.dflt">Default text</string>
+</resources>
