@@ -11,7 +11,7 @@ public class ShooterFactroty {
      * something to start with
      * @return
      */
-    public AbstractShooter getDefalultShooter() {
+    public NodeShooter getDefalultShooter() {
 
         return new ASIcamShooter();
         }

@@ -1,11 +1,12 @@
 package feltech.strixdroidshooter.actions;
 
 import android.util.Log;
-import feltech.strixdroidshooter.constructs.StrixException;
-import feltech.strixdroidshooter.constructs.domain.AbstractCameraPreset;
-import feltech.strixdroidshooter.shooters.AbstractCamera;
-import  feltech.strixdroidshooter.shooters.AbstractShooter;
-import feltech.strixdroidshooter.shooters.CameraFactory;
+
+import feltech.strixdroidshooter.devices.ASICAM.ASIcamera;
+import feltech.strixdroidshooter.devices.CameraPreset;
+import feltech.strixdroidshooter.devices.Camera;
+import feltech.strixdroidshooter.shooters.NodeShooter;
+import feltech.strixdroidshooter.devices.CameraFactory;
 import feltech.strixdroidshooter.shooters.ShooterFactroty;
 
 /**
@@ -24,17 +25,17 @@ public class CameraActionPanel {
     public String shootImgToLib( ) {
         Log.d(logTag, "shootImgToLib");
         String imgAddress = new String();
-        AbstractShooter shooter =  (new ShooterFactroty()).getDefalultShooter();
+        NodeShooter shooter =  (new ShooterFactroty()).getDefalultShooter();
 
         // 2 connect => setup => shoot => store sequence with all defaults
         try {
-            if (shooter.chkCamPresenceDefault()) {
+            if (shooter.chkCamPresence(new ASIcamera())) {
 
                 /// 2.1 connect (get ID)
-                AbstractCamera cam = (new CameraFactory()).getHdCamera();
+                Camera cam = (new CameraFactory()).getHdCamera();
 
                 /// 2.2 setup
-                AbstractCameraPreset preset = cam.getHardDefaultPreset();
+                CameraPreset preset = cam.getHDpreset();
 
                 return "got a camera here!";
 
